@@ -21,3 +21,22 @@ class Observable<D = any, C =  (d: D) => void> {
     });
   }
 }
+
+const observable = new Observable<string, (string) => void>;
+
+const listenerOne = (data: string) => {
+  console.log('One has been notified about: ' + data);
+};
+
+const listenerTwo = (data: string) => {
+  console.log('Two has been notified about: ' + data);
+};
+
+observable.subscribe(listenerOne);
+observable.subscribe(listenerTwo);
+
+observable.notify('Hello World!');
+
+// output =>
+// 'One has been notified about: Hello World!'
+// 'Two has been notified about: Hello World!'

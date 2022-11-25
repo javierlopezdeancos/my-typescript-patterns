@@ -19,3 +19,19 @@ class FlyerDog extends Dog {
     return "Flying!";
   }
 }
+
+const dog1 = new Dog("Daisy");
+const dog2 = new Dog("Max");
+const dog3 = new Dog("Spot");
+
+dog1.bark();
+// output -> "Woof!"
+
+// Object.create
+const dog = {
+  bark() {
+    return `Woof!`;
+  }
+};
+
+const pet1 = Object.create(dog);

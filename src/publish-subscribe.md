@@ -10,53 +10,6 @@ It also means that dynamic networks can be built at internet scale. However, bui
 
 This introduction to the pub/sub messaging pattern describes what it is, and why developers use it, and discusses the difficulties that must be overcome when building a messaging system at scale.
 
-## Source code
-
-```ts
-class PublishSubscriber<D = any, C =  (d: D) => void>  {
-  private _subscribers: Record<string, C[]> = {};
-
-  constructor() {}
-
-  public get subscribers() : any {
-    return this._subscribers;
-  }
-
-  public subscribe(event: string, callback: C): void {
-    if (!this._subscribers[event]) {
-        this._subscribers[event] = [];
-    }
-
-    this._subscribers[event].push(callback);
-  }
-
-  public publish(event: string, data: D): void {
-    if (!this._subscribers[event]) {
-      return;
-    }
-
-    this._subscribers[event].forEach(callback => {
-      if (typeof callback !== 'function') {
-        return;
-      }
-
-      callback(data);
-    });
-  }
-}
-```
-
-## Usage
-
-```ts
-const bus = new PublishSubscriber<string, (string) => void>();
-
-const sayHi = (data: string) => console.log(data);
-
-bus.subscribe('say-hi', sayHi);
-bus.publish('say-hi', 'hello');
-
-// output => 'hello'
-```
+[Example](./publish-subscribe.ts)
 
 

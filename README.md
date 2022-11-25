@@ -5,4 +5,13 @@
 Design patterns in typescript
 
 * Creational Design Patterns
-  * [Factory Method](./CreationalDesignPatterns/factoryMethod.md)
+  - [x] [Composite](./composite.md)
+  - [x] [Constructor](./constructor.md)
+  - [x] [Facade](./facade.md)
+  - [x] [Factory](./factory.md)
+  - [x] [Mediator](./mediator.md)
+  - [x] [Observer](./observer.md)
+  - [x] [Prototipe](./prototipe.md)
+  - [] [Proxy](./proxy.md)
+  - [x] [Publish Subscribe](./publish-subscribe.md)
+  - [x] [Singleton](./singleton.md)

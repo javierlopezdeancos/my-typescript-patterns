@@ -1,0 +1,3 @@
+# Factory
+
+[Example](./factory.ts)

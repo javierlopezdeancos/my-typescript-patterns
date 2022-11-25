@@ -31,3 +31,7 @@ class Counter implements Singleton {
     return --this.counter;
   }
 }
+
+const counter1 = new Counter();
+const counter2 = new Counter();
+// Error: You can only create one instance!

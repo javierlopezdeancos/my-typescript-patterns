@@ -6,42 +6,7 @@ The prototype is an object that's native to JavaScript, and can be accessed by o
 
 In our applications, we often have to create many objects of the same type. A useful way of doing this is by creating multiple instances of an ES6 class.
 
-## Source code
-
-```typescript
-class Dog {
-  private _name: string;
-
-  constructor(name) {
-    this._name = name;
-  }
-
-  bark() {
-    return `Woof!`;
-  }
-}
-
-class FlyerDog extends Dog {
-  constructor(name) {
-    super(name);
-  }
-
-  fly() {
-    return "Flying!";
-  }
-}
-```
-
-## Usage
-
-```typescript
-const dog1 = new Dog("Daisy");
-const dog2 = new Dog("Max");
-const dog3 = new Dog("Spot");
-
-dog1.bark();
-// output -> "Woof!"
-```
+[Example](./prototype.ts)
 
 ## Object.create
 
