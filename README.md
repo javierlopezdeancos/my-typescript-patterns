@@ -12,7 +12,7 @@ Design patterns in typescript
   - [ ] [Fly Weight](./src/fly-weight.md)
   - [x] [Mediator](./src/mediator.md)
   - [x] [Observer](./src/observer.md)
-  - [x] [Prototipe](./src/prototipe.md)
+  - [x] [Prototype](./src/prototype.md)
   - [ ] [Proxy](./src/proxy.md)
   - [x] [Publish Subscribe](./src/publish-subscribe.md)
   - [x] [Singleton](./src/singleton.md)
