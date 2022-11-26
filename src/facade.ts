@@ -1,11 +1,11 @@
-type FacadeProps = {
+type Facade = {
   value: number;
   run?: boolean;
   jump?: boolean;
 }
 
 class Module {
-  private _value: number;
+  private value: number;
 
   constructor() {}
 
@@ -17,18 +17,10 @@ class Module {
     console.log('jumping');
   }
 
-  public get value() : number {
-    return this._value;
-  }
+  public facade(props: Facade): void {
+    this.value = props.value;
 
-  public set value(v : number) {
-    this._value = v;
-  }
-
-  public facade(props: FacadeProps): void {
-    this._value = props.value;
-
-    console.log(`current value: ${this._value}`);
+    console.log(`current value: ${this.value}`);
 
     if (props.run) {
         this.run();
