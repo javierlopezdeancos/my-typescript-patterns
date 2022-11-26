@@ -15,3 +15,4 @@ Design patterns in typescript
 - [ ] [Proxy](./src/proxy.md)
 - [x] [Publish Subscribe](./src/publish-subscribe.md)
 - [x] [Singleton](./src/singleton.md)
+- [x] [Strategy](./src/strategy.md)
