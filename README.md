@@ -6,6 +6,7 @@ Design patterns in typescript
 
 - [x] [Composite](./src/composite.md)
 - [x] [Constructor](./src/constructor.md)
+- [x] [Decorator](./src/decorator.md)
 - [x] [Facade](./src/facade.md)
 - [x] [Factory](./src/factory.md)
 - [x] [FlyWeight](./src/flyweight.md)
