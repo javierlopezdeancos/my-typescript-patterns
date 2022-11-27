@@ -2,7 +2,7 @@ interface Mediator {
   logMessage(pilot: Pilot, message: string): void;
 }
 
-class ChatChannel implements Mediator{
+class ChatChannel implements Mediator {
   constructor() {}
 
   public logMessage(pilot: Pilot, message: string): void {

@@ -10,6 +10,7 @@ Design patterns in typescript
 - [x] [Facade](./src/facade.md)
 - [x] [Factory](./src/factory.md)
 - [x] [FlyWeight](./src/flyweight.md)
+- [x] [Iterator](./src/iterator.md)
 - [x] [Mediator](./src/mediator.md)
 - [x] [Observer](./src/observer.md)
 - [x] [Prototype](./src/prototype.md)
