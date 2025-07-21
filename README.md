@@ -25,6 +25,22 @@
       - [Ver un ejemplo de código](/src/creacionales/prototype.md#ver-un-ejemplo-de-código-3)
   - Estructurales
   - Comportamiento
+    - [El patron Iterator](/src/comportamiento/iterator.md#el-patron-iterator)
+      - [Usando el patrón Iterator](/src/comportamiento/iterator.md#usando-el-patr%C3%B3n-iterator)
+      - [Ejemplo](/src/comportamiento/iterator.md#ejemplo)
+      - [Ejemplo en vivo](/src/comportamiento/iterator.md#ejemplo-en-vivo)
+      - [Ejemplo de código](/src/comportamiento/iterator.md#ejemplo-de-c%C3%B3digo)
+    - [El Patrón Mediador](/src/comportamiento/mediator.md#el-patr%C3%B3n-mediador)
+      - [Usando el mediador](/src/comportamiento/mediator.md#usando-el-mediador)
+      - [Ejemplo](/src/comportamiento/mediator.md#ejemplo)
+      - [Ejemplo en vivo](/src/comportamiento/mediator.md#ejemplo-en-vivo)
+      - [Ejemplo de código](/src/comportamiento/mediator.md#ejemplo-de-c%C3%B3digo)
+    - [El patrón Strategy](/src/comportamiento/strategy.md#el-patr%C3%B3n-strategy)
+      - [Usando el patrón Strategy](/src/comportamiento/strategy.md#usando-el-patr%C3%B3n-strategy)
+      - [Participantes del patrón Strategy](/src/comportamiento/strategy.md#participantes-del-patr%C3%B3n-strategy)
+      - [Ejemplo](/src/comportamiento/strategy.md#ejemplo)
+      - [Ejemplo en vivo](/src/comportamiento/strategy.md#ejemplo-en-vivo)
+      - [Ejemplo de código](/src/comportamiento/strategy.md#ejemplo-de-c%C3%B3digo)
   - [Documentación adicional](#documentaci%C3%B3n-adicional)
 
 Patrones de diseño en Typescript
