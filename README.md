@@ -1,20 +1,20 @@
 ![meme](./assets/meme.jpeg)
 
-# My typescript patterns
+# Aprende patrones de diseño con Typescript en español 🇪🇸
 
-Design patterns in typescript
+- [Aprende patrones de diseño con Typescript en español 🇪🇸](#aprende-patrones-de-dise%C3%B1o-con-typescript-en-espa%C3%B1ol-)
+  - [El patron Composite](src/composite.md#el-patron-composite)
+    - [Usar el patron Composite](src/composite.md#usar-el-patron-composite)
+    - [Diagrama de clases](src/composite.md#diagrama-de-clases)
+    - [Ejemplo](src/composite.md#ejemplo)
+    - [Ver un ejemplo de código](src/composite.md#ver-un-ejemplo-de-c%C3%B3digo)
+  - [El patron Constructor](src/constructor.md#el-patron-constructor)
+    - [Ejemplo](src/constructor.md#ejemplo)
+    - [Ver un ejemplo de código](src/constructor.md#ver-un-ejemplo-de-c%C3%B3digo)
+  - [Documentación adicional](#documentaci%C3%B3n-adicional)
 
-- [x] [Composite](./src/composite.md)
-- [x] [Constructor](./src/constructor.md)
-- [x] [Decorator](./src/decorator.md)
-- [x] [Facade](./src/facade.md)
-- [x] [Factory](./src/factory.md)
-- [x] [FlyWeight](./src/flyweight.md)
-- [x] [Iterator](./src/iterator.md)
-- [x] [Mediator](./src/mediator.md)
-- [x] [Observer](./src/observer.md)
-- [x] [Prototype](./src/prototype.md)
-- [x] [Proxy](./src/proxy.md)
-- [x] [Publish Subscribe](./src/publish-subscribe.md)
-- [x] [Singleton](./src/singleton.md)
-- [x] [Strategy](./src/strategy.md)
+Patrones de diseño en Typescript
+
+## Documentación adicional
+
+[Patrones de diseño de refactoring guru](https://refactoring.guru/es/design-patterns)

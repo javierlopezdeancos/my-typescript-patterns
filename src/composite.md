@@ -1,11 +1,14 @@
-# The Composite pattern
-The Composite pattern allows the creation of objects with properties that are primitive items or a collection of objects. Each item in the collection can hold other collections themselves, creating deeply nested structures.
+# El patron Composite
 
-## Using Composite
+El patron Composite permite la creación de objetos con propiedades que son elementos primitivos o una coleccion de objetos. Cada elemento en la colección puede contener otras colecciones, creando estructuras profundamente anidadas.
 
-A tree control is a perfect example of a Composite pattern. The nodes of the tree either contain an individual object (leaf node) or a group of objects (a subtree of nodes).
+## Usar el patron Composite
 
-All nodes in the Composite pattern share a common set of properties and methods which supports individual objects as well as object collections. This common interface greatly facilitates the design and construction of recursive algorithms that iterate over each object in the Composite collection
+Un control de árbol es un ejemplo perfecto de un patron Composite. Los nodos del árbol contienen un objeto individual (nodo hoja) o un grupo de objetos (un sub árbol de nodos).
+
+Todos los nodos en el patron Composite comparten un conjunto común de propiedades y métodos que admiten objetos individuales así como colecciones de objetos. Esta interfaz común facilita en gran medida el diseño y la construcción de algoritmos recursivos que iteran sobre cada objeto en la colección Composite.
+
+## Diagrama de clases
 
 ```mermaid
 flowchart TD
@@ -15,6 +18,72 @@ flowchart TD
     Composite1(Composite) --> Composite2(Composite)
 ```
 
-## See a code example
+## Ejemplo
+
+```typescript
+interface DomElement {
+  render(): string;
+}
+
+class TagElement implements DomElement {
+  private children: DomElement[] = [];
+
+  private name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  public appendChild(domElement: DomElement): void {
+    this.children.push(domElement);
+  }
+
+  public render(): string {
+    const children = this.children.map((child: DomElement) => child.render()).join('');
+    return `<${this.name}>\n${children}</${this.name}>\n`;
+  }
+}
+
+class TextElement implements DomElement {
+  private text: string;
+
+  constructor(text: string) {
+    this.text = text;
+  }
+
+  public render(): string {
+    return `${this.text}\n`;
+  }
+}
+
+function render(domElement: DomElement) {
+  console.log(domElement.render());
+}
+
+const body = new TagElement('body');
+const div = new TagElement('div');
+const label = new TagElement('label');
+const text = new TextElement('Hello World');
+
+label.appendChild(text);
+body.appendChild(div);
+body.appendChild(label);
+
+render(body);
+
+/*
+  // Output:
+
+  <body>
+    <div>
+    </div>
+    <label>
+      Hello World
+    </label>
+  </body>
+*/
+```
+
+## Ver un ejemplo de código
 
 [Example](./composite.ts)
