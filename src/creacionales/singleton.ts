@@ -8,11 +8,11 @@ class Counter implements Singleton {
   private counter: number = 0;
 
   constructor() {
-    if (this.instance) {
-      throw new Error("You can only create one instance!");
-    }
-
     this.instance = this;
+
+    if (this.instance) {
+      throw new Error('You can only create one instance!');
+    }
   }
 
   getInstance(): Singleton {
@@ -32,6 +32,12 @@ class Counter implements Singleton {
   }
 }
 
-const counter1 = new Counter();
-const counter2 = new Counter();
-// Error: You can only create one instance!
+const counterA = new Counter();
+console.log('counterA', counterA.getCount());
+
+try {
+  const counterB = new Counter();
+  console.log('counterB', counterB.getCount());
+} catch (error) {
+  console.log(error);
+}
