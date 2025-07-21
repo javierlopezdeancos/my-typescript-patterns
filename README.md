@@ -1,4 +1,3 @@
-
 # Aprende patrones de diseño con Typescript en español 🇪🇸
 
 ![meme](./assets/meme.jpeg)
@@ -25,6 +24,7 @@
       - [Ejemplo en vivo](/src/creacionales/prototype.md#ejemplo-en-vivo)
       - [Ver un ejemplo de código](/src/creacionales/prototype.md#ver-un-ejemplo-de-código-3)
   - Estructurales
+  - Comportamiento
   - [Documentación adicional](#documentaci%C3%B3n-adicional)
 
 Patrones de diseño en Typescript

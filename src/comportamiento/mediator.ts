@@ -1,38 +1,99 @@
+/**
+ * The Mediator interface declares a method used by components to notify the
+ * mediator about various events. The Mediator may react to these events and
+ * pass the execution to other components.
+ */
 interface Mediator {
-  logMessage(pilot: Pilot, message: string): void;
+  logMessage(user: User, message: string): void;
 }
 
+/**
+ * Concrete Mediators implement cooperative behavior by coordinating several
+ * components.
+ */
 class ChatChannel implements Mediator {
-  constructor() {}
+  private pilot: Pilot;
 
-  public logMessage(pilot: Pilot, message: string): void {
+  private airTrafficController: AirTrafficController;
+
+  constructor(pilot: Pilot, airTrafficController: AirTrafficController) {
+    this.pilot = pilot;
+    this.pilot.setMediator(this);
+
+    this.airTrafficController = airTrafficController;
+    this.airTrafficController.setMediator(this);
+  }
+
+  public logMessage(user: User, message: string): void {
     const time = new Date();
-    const sender = pilot.getName();
+    const sender = user.getName();
 
-    console.log(`${time} [${sender}]: ${message}`);
+    if (user instanceof Pilot) {
+      this.airTrafficController.answerToPilot(
+        `${time} [${sender}]: ${message} - [${this.airTrafficController.getName()}]: oki, I will answer you soon`
+      );
+    } else if (user instanceof AirTrafficController) {
+      this.pilot.answerToAirTrafficController(
+        `${time} [${sender}]: ${message} - [${this.pilot.getName()}]: message received, I'll take care of it`
+      );
+    }
   }
 }
 
-interface User {
-  getName(): string;
-  send(message: string): void;
-}
+/**
+ * The User class provides the basic functionality of storing a mediator's
+ * instance inside user objects.
+ */
+class User {
+  protected mediator: Mediator;
 
-class Pilot implements User {
   private name: string;
 
-  private chatChannel: ChatChannel;
-
-  constructor(name: string, chatChannel: ChatChannel) {
+  constructor(name: string, mediator?: Mediator) {
     this.name = name;
-    this.chatChannel = chatChannel;
+    this.mediator = mediator!;
   }
 
   public getName(): string {
     return this.name;
   }
 
+  public setMediator(mediator: Mediator): void {
+    this.mediator = mediator;
+  }
+
   public send(message: string): void {
-    this.chatChannel.logMessage(this, message);
+    this.mediator.logMessage(this, message);
   }
 }
+
+class Pilot extends User {
+  public type = 'Pilot';
+
+  constructor(name: string, mediator?: Mediator) {
+    super(name, mediator);
+  }
+
+  public answerToAirTrafficController(message: string): void {
+    this.send(message);
+  }
+}
+
+class AirTrafficController extends User {
+  public type = 'Air Traffic Controller';
+
+  constructor(name: string, mediator?: Mediator) {
+    super(name, mediator);
+  }
+
+  public answerToPilot(message: string): void {
+    this.send(message);
+  }
+}
+
+const pilot = new Pilot('John');
+const airTrafficController = new AirTrafficController('Jane');
+const chatChannel = new ChatChannel(pilot, airTrafficController);
+
+pilot.send('Hello, I am ready for takeoff!');
+airTrafficController.send('Roger that, you are cleared for takeoff!');

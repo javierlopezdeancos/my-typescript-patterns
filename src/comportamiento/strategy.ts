@@ -1,76 +1,68 @@
-interface Company {
-  calculate: (package: Package) => string
-};
+interface Strategy {
+  calculate: (p: Package) => string;
+}
 
 type Package = {
   from: string;
   to: string;
-  weigth: string;
+  weight: string;
 };
 
 class Shipping {
-  company: Company | undefined;
+  strategy: Strategy | undefined;
 
-  setStrategy(c: Company): void  {
-    this.company = c;
-  };
+  setStrategy(s: Strategy): void {
+    this.strategy = s;
+  }
 
   calculate(p: Package): string | null {
-    if (!this?.company) {
+    if (!this?.strategy) {
       return null;
     }
 
-    return this.company.calculate(p);
+    return this.strategy.calculate(p);
   }
-};
+}
 
-class UPS implements Company {
-    calculate(p: Package): string {
-      // calculations...
-      return "$45.95";
-    }
-};
+class UpsStrategy implements Strategy {
+  calculate(p: Package): string {
+    // calculations...
+    return '$45.95';
+  }
+}
 
-class USPS implements Company {
-    calculate(p: Package): string {
-        // calculations...
-        return "$39.40";
-    }
-};
+class UspsStrategy implements Strategy {
+  calculate(p: Package): string {
+    // calculations...
+    return '$39.40';
+  }
+}
 
-class Fedex implements Company {
-    calculate (p: Package): string {
-        // calculations...
-        return "$43.20";
-    }
-};
+class FedexStrategy implements Strategy {
+  calculate(p: Package): string {
+    // calculations...
+    return '$43.20';
+  }
+}
 
-const package = {
-  from: "76712",
-  to: "10012",
-  weigth: "lkg"
+const package: Package = {
+  from: '76712',
+  to: '10012',
+  weight: 'lkg',
 };
 
 // the 3 strategies
-
-const ups = new UPS();
-const usps = new USPS();
-const fedex = new Fedex();
+const upsStrategy = new UpsStrategy();
+const uspsStrategy = new UspsStrategy();
+const fedexStrategy = new FedexStrategy();
 
 const shipping = new Shipping();
 
-shipping.setStrategy(ups);
-console.log("UPS Strategy: " + shipping.calculate(package));
-// Output
-// 'UPS Strategy: $45.95'
+shipping.setStrategy(upsStrategy);
+console.log('UPS Strategy: ' + shipping.calculate(package));
 
-shipping.setStrategy(usps);
-console.log("USPS Strategy: " + shipping.calculate(package));
-// Output
-// 'USPS Strategy: $39.40'
+shipping.setStrategy(uspsStrategy);
+console.log('USPS Strategy: ' + shipping.calculate(package));
 
-shipping.setStrategy(fedex);
-console.log("Fedex Strategy: " + shipping.calculate(package));
-// Output
-// 'Fedex Strategy: $43.20'
-
+shipping.setStrategy(fedexStrategy);
+console.log('Fedex Strategy: ' + shipping.calculate(package));

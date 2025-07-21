@@ -1,3 +1,9 @@
+- [El patrón Constructor](#el-patr%C3%B3n-constructor)
+  - [Participantes en el patrón](#participantes-en-el-patr%C3%B3n)
+  - [Ejemplo](#ejemplo)
+  - [Ejemplo en vivo](#ejemplo-en-vivo)
+  - [Ver un ejemplo de código](#ver-un-ejemplo-de-c%C3%B3digo)
+
 # El patrón Constructor
 
 Builder es un patrón de diseño creacional que nos permite construir objetos complejos paso a paso. El patrón nos permite producir distintos tipos y representaciones de un objeto empleando el mismo código de construcción.

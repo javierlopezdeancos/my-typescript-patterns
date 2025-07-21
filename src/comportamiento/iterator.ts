@@ -1,53 +1,139 @@
-type Item = string | number | boolean;
+/**
+ * Iterator Design Pattern
+ *
+ * Intent: Lets you traverse elements of a collection without exposing its
+ * underlying representation (list, stack, tree, etc.).
+ */
 
-class ItemsIterator<I = Item> {
-  private index: number;
+interface MyIterator<T> {
+  // Return the current element.
+  current(): T;
 
-  private items: I[];
+  // Return the current element and move forward to next element.
+  next(): T;
 
-  constructor(items: I[]) {
-    this.index = 0;
-    this.items = items;
+  // Return the key of the current element.
+  key(): number;
+
+  // Checks if current position is valid.
+  valid(): boolean;
+
+  // Rewind the Iterator to the first element.
+  rewind(): void;
+}
+
+interface Aggregator {
+  // Retrieve an external iterator.
+  getIterator(): MyIterator<string>;
+}
+
+/**
+ * Concrete Iterators implement various traversal algorithms. These classes
+ * store the current traversal position at all times.
+ */
+class AlphabeticalOrderIterator implements MyIterator<string> {
+  private collection: WordsCollection;
+
+  /**
+   * Stores the current traversal position. An iterator may have a lot of
+   * other fields for storing iteration state, especially when it is supposed
+   * to work with a particular kind of collection.
+   */
+  private position: number = 0;
+
+  /**
+   * This variable indicates the traversal direction.
+   */
+  private reverse: boolean = false;
+
+  constructor(collection: WordsCollection, reverse: boolean = false) {
+    this.collection = collection;
+    this.reverse = reverse;
+
+    if (reverse) {
+      this.position = collection.getCount() - 1;
+    }
   }
 
-  public first() {
-    this.reset();
-    return this.next();
+  public rewind() {
+    this.position = this.reverse ? this.collection.getCount() - 1 : 0;
   }
 
-  public next() {
-    return this.items[this.index++];
+  public current(): string {
+    return this.collection.getItems()[this.position];
   }
 
-  public hasNext() {
-    if (!this?.index ) {
-      return false;
+  public key(): number {
+    return this.position;
+  }
+
+  public next(): string {
+    const item = this.collection.getItems()[this.position];
+    this.position += this.reverse ? -1 : 1;
+    return item;
+  }
+
+  public valid(): boolean {
+    if (this.reverse) {
+      return this.position >= 0;
     }
 
-    return this.index <= this?.items?.length;
-  }
-
-  private reset() {
-    this.index = 0;
-  }
-
-  public each(callback: (item: I) => void) {
-    for (let item = this.first(); this.hasNext(); item = this.next()) {
-      callback(item);
-    }
+    return this.position < this.collection.getCount();
   }
 }
 
-const items: Item[] = ["one", 2, "circle", true, "Applepie"];
+/**
+ * Concrete Collections provide one or several methods for retrieving fresh
+ * iterator instances, compatible with the collection class.
+ */
+class WordsCollection implements Aggregator {
+  private items: string[] = [];
 
-const iterator = new ItemsIterator(items);
+  public getItems(): string[] {
+    return this.items;
+  }
 
-// using for loop
-for (let i = iterator.first(); iterator.hasNext(); i = iterator.next()) {
-  console.log(i);
+  public getCount(): number {
+    return this.items.length;
+  }
+
+  public addItem(item: string): void {
+    this.items.push(item);
+  }
+
+  public getIterator(): MyIterator<string> {
+    return new AlphabeticalOrderIterator(this);
+  }
+
+  public getReverseIterator(): MyIterator<string> {
+    return new AlphabeticalOrderIterator(this, true);
+  }
 }
 
-// using Iterator's each method
-iterator.each((item: Item): void => {
-  console.log(item);
-});
+/**
+ * The client code may or may not know about the Concrete Iterator or Collection
+ * classes, depending on the level of indirection you want to keep in your
+ * program.
+ */
+const collection = new WordsCollection();
+
+collection.addItem('First');
+collection.addItem('Second');
+collection.addItem('Third');
+
+const iterator = collection.getIterator();
+
+console.log('Straight traversal:');
+
+while (iterator.valid()) {
+  console.log(iterator.next());
+}
+
+console.log('');
+console.log('Reverse traversal:');
+
+const reverseIterator = collection.getReverseIterator();
+
+while (reverseIterator.valid()) {
+  console.log(reverseIterator.next());
+}

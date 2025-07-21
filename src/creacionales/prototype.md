@@ -1,3 +1,9 @@
+- [El patrón Prototipo](#el-patr%C3%B3n-prototipo)
+  - [Object.create](#objectcreate)
+  - [Ejemplo](#ejemplo)
+  - [Ejemplo en vivo](#ejemplo-en-vivo)
+  - [Ver un ejemplo de código](#ver-un-ejemplo-de-c%C3%B3digo)
+
 # El patrón Prototipo
 
 Prototype es un patrón de diseño creacional que nos permite copiar objetos existentes sin que el código dependa de sus clases.

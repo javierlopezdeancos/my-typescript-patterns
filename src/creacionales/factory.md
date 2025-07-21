@@ -1,3 +1,9 @@
+- [El patrón Factoría](#el-patr%C3%B3n-factor%C3%ADa)
+  - [Participantes en el patrón](#participantes-en-el-patr%C3%B3n)
+  - [Ejemplo](#ejemplo)
+  - [Ejemplo en vivo](#ejemplo-en-vivo)
+  - [Ejemplo de código](#ejemplo-de-c%C3%B3digo)
+
 # El patrón Factoría
 
 Factory Method es un patrón de diseño creacional que proporciona una interfaz para crear objetos en una superclase, mientras permite a las subclases alterar el tipo de objetos que se crearán.

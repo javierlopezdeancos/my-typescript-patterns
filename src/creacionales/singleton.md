@@ -1,3 +1,8 @@
+- [El patron Singleton](#el-patron-singleton)
+  - [Ejemplo](#ejemplo)
+  - [Ejemplo en vivo](#ejemplo-en-vivo)
+  - [Ver un ejemplo de código](#ver-un-ejemplo-de-c%C3%B3digo)
+
 # El patron Singleton
 
 Los Singletons son clases que solo pueden ser instanciadas una vez y pueden ser accedidas globalmente. Esta única instancia puede ser compartida en toda nuestra aplicación.
@@ -8,13 +13,13 @@ El patron singleton es útil cuando necesitamos controlar el acceso a un recurso
 
 Cómo debería ser un singleton:
 
-* `getInstance` método que devuelve el valor de la instancia
+- `getInstance` método que devuelve el valor de la instancia
 
 Usar el patrón Singleton nos brinda ciertas ventajas:
 
-* `Control de acceso`: Puedes tener la certeza de que una clase tiene una única instancia.
-* `Punto de acceso global`: Obtienes un punto de acceso global a dicha instancia.
-* `Inicialización bajo demanda`: El objeto Singleton solo se inicializa cuando se requiere por primera vez.
+- `Control de acceso`: Puedes tener la certeza de que una clase tiene una única instancia.
+- `Punto de acceso global`: Obtienes un punto de acceso global a dicha instancia.
+- `Inicialización bajo demanda`: El objeto Singleton solo se inicializa cuando se requiere por primera vez.
 
 ## Ejemplo
 
